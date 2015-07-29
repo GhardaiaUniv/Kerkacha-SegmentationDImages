@@ -11,7 +11,7 @@ public class KMeans {
 
     public static final int MODE_CONTINUOUS = 0x01;
     public static final int MODE_ITERATIVE = 0x02;
-    private static final String USAGE = "\nUsage:\t$ java KMeans  abs/input/path  abs/output/path  ClusterCount  MODE\n\n" +
+    private static final String USAGE = "\nUsage:\t$ java KMeans  MODE  ClusterCount  /input/path  output/path\n\n" +
             "ClusterCount:\t0-255\n" +
             "MODE\t\t:\t-i (interactive) | -c (continuous)\n\n";
 
@@ -31,12 +31,8 @@ public class KMeans {
         }
 
         // Parse arguments
-        String src = args[0];   // image.in
-        String target = args[1];   // image.out
-        int ClusterCount = Integer.parseInt(args[2]);  // ClusterCount
-        String m = args[3];     // MODE
         int mode = MODE_CONTINUOUS;     // Default case
-        switch (m) {
+        switch (args[0].toLowerCase()) {
             case "-i":
                 mode = MODE_ITERATIVE;
                 break;
@@ -47,9 +43,22 @@ public class KMeans {
                 System.err.println("Err! Unknown mode ... Using default (MODE_CONTINUOUS)");
                 break;
         }
+        int clusterCount = 0;  // clusterCount
+        try {
+            clusterCount = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid argument [ClusterCount]! Please enter a valid integer value.");
+            System.exit(-1);
+        }
+        if (!(clusterCount >= 0 && clusterCount < 256)) {
+            System.err.println("ClusterCount should be in the interval 0-255");
+            System.exit(-1);
+        }
+        String src = args[2];   // image.in
+        String target = args[3];   // image.out
 
         // call the function to actually start the clustering
-        BufferedImage clusteredImg = new KMeans().calculate(loadImage(src), ClusterCount, mode);
+        BufferedImage clusteredImg = new KMeans().calculate(loadImage(src), clusterCount, mode);
         // save the resulting image
         saveImage(clusteredImg, target);
     }
