@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * [7/29/15:15:57]
@@ -34,12 +33,11 @@ public class Utils {
 
     public static void saveImage (BufferedImage image, String target) {
         try {
-            Path file = Files.createFile(Paths.get(target));
-            ImageIO.write(image, "png", file.toFile());
+            ImageIO.write(image, "png", new File(target));
         } catch (NullPointerException e) {
             System.err.println("Err! Could not initiate the output file\nExiting");
             System.exit(-1);
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.err.println(e.toString() + " Image '" + target + "' saving failed.\nExiting");
             System.exit(-1);
         }
