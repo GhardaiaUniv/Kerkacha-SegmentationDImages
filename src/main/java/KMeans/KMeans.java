@@ -1,12 +1,11 @@
 package KMeans;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
 import static KMeans.Utils.loadImage;
+import static KMeans.Utils.saveImage;
 
 public class KMeans {
 
@@ -16,7 +15,7 @@ public class KMeans {
             "ClusterCount:\t0-255\n" +
             "MODE\t\t:\t-i (interactive) | -c (continuous)\n\n";
 
-    Cluster[] clusters;
+    private Cluster[] clusters;
 
 
     // Constructor
@@ -33,7 +32,7 @@ public class KMeans {
 
         // Parse arguments
         String src = args[0];   // image.in
-        String dst = args[1];   // image.out
+        String target = args[1];   // image.out
         int ClusterCount = Integer.parseInt(args[2]);  // ClusterCount
         // TODO NOTE: Better catch up exceptions
         // NOTE: Could have init value
@@ -52,23 +51,9 @@ public class KMeans {
         }
 
         // call the function to actually start the clustering
-        BufferedImage dstImage = new KMeans().calculate(loadImage(src), ClusterCount, mode);
+        BufferedImage clusteredImg = new KMeans().calculate(loadImage(src), ClusterCount, mode);
         // save the resulting image
-        saveImage(dst, dstImage);
-    }
-
-    public static void saveImage (String filename, BufferedImage image) {
-        try {
-            File file = new File(filename);
-            ImageIO.write(image, "png", file);
-
-        } catch (NullPointerException e) {
-            System.err.println("Err! Could not initiate the output file\nExiting");
-            System.exit(-1);
-        } catch (Exception e) {     // Catch err
-            System.err.println(e.toString() + " Image '" + filename + "' saving failed.\nExiting");
-            System.exit(-1);
-        }
+        saveImage(clusteredImg, target);
     }
 
     public BufferedImage calculate (BufferedImage image, int ClusterCount, int mode) {
