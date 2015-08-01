@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.ioayman</groupId>
+    <artifactId>KMeans</artifactId>
+    <version>1.0</version>
+
+    <name>La ségmentation d'images - Méthode KMeans</name>
+    <description>
+        Image segmentation is an important step in any process of image analysis. In the Literature, there are two dual
+        approaches; The edge approach which locates objects boundaries and the region approach which partitions the
+        image into a set of regions.
+        The best result is achieved through cooperation of both approaches. This cooperation is more effective because
+        the inconvenience of one method may be overcome by the benefits of the alternative one.
+    </description>
+
+    <properties>
+        <country>Algérie</country>
+        <university>Université de Ghardaïa</university>
+        <faculty>Sciences et Technologies</faculty>
+        <departement>Mathématique et informatique</departement>
+        <major>Informatique Académique</major>
+    </properties>
+
+    <contributors>
+        <contributor>
+            <name>Habiba Kerkacha</name>
+            <email></email>
+            <url></url>
+        </contributor>
+        <contributor>
+            <name>Ayman Nedjmeddine</name>
+            <email>theycallmethedr@gmail.com</email>
+            <url>https://github.com/IOAyman</url>
+        </contributor>
+    </contributors>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.media.jai</groupId>
+            <artifactId>com.springsource.javax.media.jai.core</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.groupId}.${project.artifactId}-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+    </repositories>
+</project>
