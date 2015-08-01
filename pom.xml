@@ -6,9 +6,37 @@
 
     <groupId>com.github.ioayman</groupId>
     <artifactId>KMeans</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>KMeans</name>
+    <version>1.0</version>
 
+    <name>La ségmentation d'images - Méthode KMeans</name>
+    <description>
+        Image segmentation is an important step in any process of image analysis. In the Literature, there are two dual
+        approaches; The edge approach which locates objects boundaries and the region approach which partitions the
+        image into a set of regions.
+        The best result is achieved through cooperation of both approaches. This cooperation is more effective because
+        the inconvenience of one method may be overcome by the benefits of the alternative one.
+    </description>
+
+    <properties>
+        <country>Algérie</country>
+        <university>Université de Ghardaïa</university>
+        <faculty>Sciences et Technologies</faculty>
+        <departement>Mathématique et informatique</departement>
+        <major>Informatique Académique</major>
+    </properties>
+
+    <contributors>
+        <contributor>
+            <name>Habiba Kerkacha</name>
+            <email></email>
+            <url></url>
+        </contributor>
+        <contributor>
+            <name>Ayman Nedjmeddine</name>
+            <email>theycallmethedr@gmail.com</email>
+            <url>https://github.com/IOAyman</url>
+        </contributor>
+    </contributors>
 
     <dependencies>
         <dependency>
